@@ -22,12 +22,12 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		100.0f,
 		10.0f,
 		10.0f,
-		10.0f,
+		50.0f,
 		0.0f,
-		0x00,
-		0x00,
-		0x00,
 		0xff,
+		0xff,
+		0xff,
+		0x44,
 		100,
 		100
 	};

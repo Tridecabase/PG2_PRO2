@@ -1,15 +1,9 @@
 #include "Actor.h"
 
-Actor::Actor(const ActorState& state)
-{
-	s = state;
-	isHit = false;
-	isAlive = true;
-}
+Actor::Actor(const ActorState& state) : s(state), isHit(false), isAlive(true) {}
 
 void Actor::Update()
 {
-	Move();
 	if (isAlive)
 	{
 		//HPが0になった時消える
@@ -18,6 +12,11 @@ void Actor::Update()
 			isAlive = false;
 		}
 	}
+}
+
+void Actor::UpdateState(const ActorState& newState)
+{
+	s = newState;
 }
 
 void Actor::Move()

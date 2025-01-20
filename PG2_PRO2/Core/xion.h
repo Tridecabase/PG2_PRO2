@@ -13,6 +13,7 @@
 #include <vector>
 #include <Memory>
 #include <iostream>
+#include <algorithm>
 #include <stdexcept>
 #include <unordered_map>
 
@@ -79,7 +80,8 @@ const float DELTA_TIME = 1.0f / 60.0f;
 //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ゲームステージ設定↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓//
 ////////////////////////////////////////////////////////////////////////////////////////////
 
-
+//最大速度
+const float MAX_SPEED = 100.0f;
 
 
 
