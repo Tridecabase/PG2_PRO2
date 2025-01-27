@@ -1,6 +1,8 @@
 #ifndef BASE_SCENE_H
 #define BASE_SCENE_H
 
+#include "Core/xion.h"
+
 class BaseScene
 {
 public:
@@ -11,8 +13,8 @@ public:
 	virtual void Update();
 	virtual void Render();
 
-private:
-
+protected:
+	unsigned int back_color;
 };
 
 #endif // !BASE_SCENE_H

@@ -1,6 +1,8 @@
 #include "Actor.h"
 
-Actor::Actor(const ActorState& state) : s(state), isHit(false), isAlive(true) {}
+Actor::Actor(const ActorState& state) 
+	: s(state), isHit(false), isAlive(true), 
+	current_mode(BlendMode::kBlendModeNone) {}
 
 void Actor::Update()
 {
@@ -19,14 +21,10 @@ void Actor::UpdateState(const ActorState& newState)
 	s = newState;
 }
 
-void Actor::Move()
+void Actor::MoveDir(float dirX, float dirY)
 {
-	if (isAlive)
-	{
-		//移動処理
-		s.x += s.vx;
-		s.y += s.vy;
-	}
+	s.x += s.vx * dirX;
+	s.y += s.vy * dirY;
 }
 
 void Actor::Input()
@@ -42,34 +40,31 @@ void Actor::TakeDamage(int damage)
 
 void Actor::Render()
 {
-	if (isAlive)
+	if (showCollisionBox)
 	{
-		if (showCollisionBox) 
+		if (!isHit)
 		{
-			if (!isHit)
-			{
-				Novice::DrawEllipse(
-					static_cast<int>(s.x),
-					static_cast<int>(s.y),
-					static_cast<int>(s.radius),
-					static_cast<int>(s.radius),
-					s.angle,
-					(s.r << 24) | (s.g << 16) | (s.b << 8) | s.a,
-					kFillModeWireFrame
-				);
-			}
-			else
-			{
-				Novice::DrawEllipse(
-					static_cast<int>(s.x),
-					static_cast<int>(s.y),
-					static_cast<int>(s.radius),
-					static_cast<int>(s.radius),
-					s.angle,
-					RED,
-					kFillModeWireFrame
-				);
-			}
+			Novice::DrawEllipse(
+				static_cast<int>(s.x),
+				static_cast<int>(s.y),
+				static_cast<int>(s.radius),
+				static_cast<int>(s.radius),
+				s.angle,
+				GetRGBA(),
+				kFillModeWireFrame
+			);
+		}
+		else
+		{
+			Novice::DrawEllipse(
+				static_cast<int>(s.x),
+				static_cast<int>(s.y),
+				static_cast<int>(s.radius),
+				static_cast<int>(s.radius),
+				s.angle,
+				RED,
+				kFillModeWireFrame
+			);
 		}
 	}
 }

@@ -8,7 +8,7 @@ const char kWindowTitle[] = "GC1B_08_ジョ_シセイ";
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
 	// ライブラリの初期化
-	Novice::Initialize(kWindowTitle, 1280, 720);
+	Novice::Initialize(kWindowTitle, WINDOW_WIDTH, WINDOW_HEIGHT);
 
 	std::unique_ptr<SceneManager> sceneManager = std::make_unique<SceneManager>();
 
@@ -22,7 +22,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		100.0f,
 		10.0f,
 		10.0f,
-		50.0f,
+		30.0f,
 		0.0f,
 		0xff,
 		0xff,
@@ -45,7 +45,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		///
 		/// ↓更新処理ここから
 		///
-
 		sceneManager->Update(keys, preKeys);
 		player->Update();
 

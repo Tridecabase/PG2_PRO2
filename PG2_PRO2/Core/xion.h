@@ -20,30 +20,6 @@
 #include "structs.h"
 #include "enum.h"
 
-/* +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
- * 				    エラーハンドリングマクロ
- * =+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
- *
- * 指定したエラー情報と詳細を基に、ファイル名・行番号を付加して
- * `std::logic_error` をスローするマクロです。
- *
- */
-#define THROW_ERROR(error_info, error_detail)   \
-    do{                                         \
-    std::string info = "parse error in ";       \
-    std::string file_pos = __FILE__;            \
-    file_pos.append(":");                       \
-    file_pos.append(std::to_string(__LINE__));  \
-    info += file_pos;                           \
-    info += ", ";                               \
-    info += (error_info);                       \
-    info += "\ndetail:";                        \
-    info += (error_detail);                     \
-    throw std::logic_error(info);               \
-}while(false)
-
-
-
 /*
  * このヘッダファイルは、ゲームの基本的な定数を定義しています。
  *
@@ -61,7 +37,7 @@
  ////////////////////////////////////////////////////////////////////////////////////////////
 
 //ウィンドウのサイズ
-const int WINDOW_WIDTH = 1280;
+const int WINDOW_WIDTH = 405;
 const int WINDOW_HEIGHT = 720;
 
 
@@ -99,6 +75,10 @@ const float MAX_SPEED = 100.0f;
 
 //プレイヤーの基準攻撃力
 const int PLAYER_BASE_DAMAGE = 10;
+//プレイヤーの最大弾数
+const int PLAYER_MAX_BULLET = 12;
+//プレイヤーの弾クールダウン
+const int BULLET_MAX_COOLDOWN = 10;
 
 
 
@@ -106,6 +86,6 @@ const int PLAYER_BASE_DAMAGE = 10;
 //↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓敵設定↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓//
 ////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
+//敵の最大数
+const int MAX_ENEMY = 12;
 

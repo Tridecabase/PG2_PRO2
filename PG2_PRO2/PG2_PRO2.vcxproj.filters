@@ -29,6 +29,9 @@
     <Filter Include="Scene">
       <UniqueIdentifier>{15abc508-e16d-4113-a806-093624f14314}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Action">
+      <UniqueIdentifier>{74354a69-efc6-4439-96b1-cc3a188798d5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C:\KamataEngine\DirectXGame\base\DirectXCommon.cpp">
@@ -64,6 +67,21 @@
     </ClCompile>
     <ClCompile Include="Characters\player.cpp">
       <Filter>Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="Action\action_result.cpp">
+      <Filter>Action</Filter>
+    </ClCompile>
+    <ClCompile Include="Action\action_move.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Characters\bullet.cpp">
+      <Filter>Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="Characters\enemy.cpp">
+      <Filter>KamataEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\game.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -161,6 +179,24 @@
     </ClInclude>
     <ClInclude Include="Characters\player.h">
       <Filter>Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Characters\bullet.h">
+      <Filter>Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Action\action_result.h">
+      <Filter>Action</Filter>
+    </ClInclude>
+    <ClInclude Include="Action\action.h">
+      <Filter>Action</Filter>
+    </ClInclude>
+    <ClInclude Include="Action\action_move.h">
+      <Filter>Action</Filter>
+    </ClInclude>
+    <ClInclude Include="Characters\enemy.h">
+      <Filter>Characters</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\game.h">
+      <Filter>Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
