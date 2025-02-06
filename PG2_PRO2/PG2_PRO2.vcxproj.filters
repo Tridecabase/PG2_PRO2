@@ -29,9 +29,6 @@
     <Filter Include="Scene">
       <UniqueIdentifier>{15abc508-e16d-4113-a806-093624f14314}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Action">
-      <UniqueIdentifier>{74354a69-efc6-4439-96b1-cc3a188798d5}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C:\KamataEngine\DirectXGame\base\DirectXCommon.cpp">
@@ -68,19 +65,25 @@
     <ClCompile Include="Characters\player.cpp">
       <Filter>Characters</Filter>
     </ClCompile>
-    <ClCompile Include="Action\action_result.cpp">
-      <Filter>Action</Filter>
-    </ClCompile>
-    <ClCompile Include="Action\action_move.cpp">
-      <Filter>KamataEngine</Filter>
-    </ClCompile>
     <ClCompile Include="Characters\bullet.cpp">
       <Filter>Characters</Filter>
     </ClCompile>
-    <ClCompile Include="Characters\enemy.cpp">
-      <Filter>KamataEngine</Filter>
-    </ClCompile>
     <ClCompile Include="Scene\game.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Characters\enemy.cpp">
+      <Filter>Characters</Filter>
+    </ClCompile>
+    <ClCompile Include="Tools\csv_parser.cpp">
+      <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\title.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\game_over.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\game_clear.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
   </ItemGroup>
@@ -183,19 +186,25 @@
     <ClInclude Include="Characters\bullet.h">
       <Filter>Characters</Filter>
     </ClInclude>
-    <ClInclude Include="Action\action_result.h">
-      <Filter>Action</Filter>
-    </ClInclude>
-    <ClInclude Include="Action\action.h">
-      <Filter>Action</Filter>
-    </ClInclude>
-    <ClInclude Include="Action\action_move.h">
-      <Filter>Action</Filter>
-    </ClInclude>
     <ClInclude Include="Characters\enemy.h">
       <Filter>Characters</Filter>
     </ClInclude>
     <ClInclude Include="Scene\game.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Tools\sprite_shaker.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="Tools\csv_parser.h">
+      <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\title.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\game_clear.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\game_over.h">
       <Filter>Scene</Filter>
     </ClInclude>
   </ItemGroup>

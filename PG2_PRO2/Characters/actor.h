@@ -21,9 +21,7 @@ public:
 	void MoveDir(float dirX, float dirY);
 	void Input();
 	void TakeDamage(int damage);
-	void Rotate(float dAngle) {
-		s.angle += dAngle;
-	}
+	void Rotate(float dAngle) { s.angle += dAngle; }
 	/* 描画処理 */
 	virtual void Render();
 

@@ -16,23 +16,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	char keys[256] = {0};
 	char preKeys[256] = {0};
 
-	ActorState player_state =
-	{
-		100.0f,
-		100.0f,
-		10.0f,
-		10.0f,
-		30.0f,
-		0.0f,
-		0xff,
-		0xff,
-		0xff,
-		0x44,
-		100,
-		100
-	};
-	Actor* player = new Player(player_state);
-
 	// ウィンドウの×ボタンが押されるまでループ
 	while (Novice::ProcessMessage() == 0) {
 		// フレームの開始
@@ -46,7 +29,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		/// ↓更新処理ここから
 		///
 		sceneManager->Update(keys, preKeys);
-		player->Update();
 
 		///
 		/// ↑更新処理ここまで
@@ -57,7 +39,6 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		///
 
 		sceneManager->Render();
-		player->Render();
 
 		///
 		/// ↑描画処理ここまで

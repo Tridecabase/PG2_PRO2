@@ -16,12 +16,15 @@ public:
 	void Move();
 	void Render() override;
 
+	void DebugInfo();
+
 	std::vector<Actor*> bullet;
 
 private:
 	unsigned int wirecolor;
 	int shot_cooldown;
 	ActorState bullet_state;
+	float ra;
 };
 
 #endif // !PLAYER_H

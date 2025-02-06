@@ -2,6 +2,7 @@
 #define SCENE_MANAGER_H
 
 #include "Core/xion.h"
+#include "Scene/game.h"
 
 class SceneManager {
 public:
@@ -29,6 +30,8 @@ private:
 
     //現在のシーン
     SceneState current_scene;
+
+    Game* game;
 
     const std::unordered_map<SceneState, std::string> SceneStateStrings = {
         {SceneState::TITLE, "TITLE"},

@@ -3,7 +3,8 @@
 Player::Player(const ActorState& state)
     : Actor(state),
     wirecolor(0x191B19FF),
-    shot_cooldown(0)
+    shot_cooldown(0),
+    ra(0.01f)
 {
     bullet_state = { s.x, s.y, 0.0f, 10.0f, 5.0f, 0.0f, 0xff, 0xff, 0xff, 0xff, 1, 1 };
     for (Actor* actor : bullet)
@@ -43,14 +44,13 @@ void Player::Move()
     if (keys[DIK_D] || preKeys[DIK_D]) {
         MoveDir(1.0f, 0.0f);
     }
-
     if (!keys[DIK_W] && !keys[DIK_S] && !keys[DIK_A] && !keys[DIK_D]) {
         SetBlendMode(kBlendModeAdd);
-        Rotate(0.01f);
+        Rotate(ra);
     }
     else {
         SetBlendMode(kBlendModeNone);
-        Rotate(0.1f);
+        Rotate(ra * 10);
     }
 }
 
@@ -98,6 +98,11 @@ void Player::Shot()
 
 void Player::Render()
 {
+
+#ifdef _DEBUG
+    DebugInfo();
+#endif
+
     for (int i = 0; i < bullet.size(); i++)
     {
         if (bullet[i] != nullptr)
@@ -108,4 +113,13 @@ void Player::Render()
     }
     StarGenerator::DrawStar(s.x, s.y, s.radius, s.angle, GetRGBA(), wirecolor, GetBlendMode());
 	Actor::Render();
+}
+
+void Player::DebugInfo() {
+#ifdef _DEBUG
+    ImGui::Begin("Player");
+    ImGui::DragFloat("radius", &s.radius, 2.0f, 1.0f, 300.0f, "%f",1.0f);
+    ImGui::DragFloat("rotation speed", &ra, 0.01f, -1.0f, 1.0f, "%f", 1.0f);
+    ImGui::End();
+#endif
 }

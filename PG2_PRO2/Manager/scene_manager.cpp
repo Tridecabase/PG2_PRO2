@@ -16,21 +16,7 @@ void SceneManager::Init() {
 
 	//初期シーンを設定
 	current_scene = SceneState::TITLE;
-
-	switch (current_scene) {
-	case SceneState::TITLE:
-
-		break;
-	case SceneState::ARCADE:
-
-		break;
-	case SceneState::GAMECLEAR:
-
-		break;
-	case SceneState::GAMEOVER:
-
-		break;
-	}
+	game = new Game();
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////
@@ -60,7 +46,7 @@ void SceneManager::Update(char keys[256], char preKeys[256]) {
 
 		break;
 	case SceneState::ARCADE:
-
+		game->Update();
 		break;
 	case SceneState::GAMECLEAR:
 
@@ -93,6 +79,7 @@ void SceneManager::Render() {
 		break;
 	case SceneState::ARCADE:
 		Novice::DrawBox(0, 0, 1280, 720, 0.0f, 0xE8D4F9FF, kFillModeSolid);
+		game->Render();
 		break;
 	case SceneState::GAMECLEAR:
 		Novice::DrawBox(0, 0, 1280, 720, 0.0f, 0xD4F9F2FF, kFillModeSolid);

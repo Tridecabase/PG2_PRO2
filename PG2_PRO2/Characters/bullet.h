@@ -11,7 +11,6 @@ public:
 
 	void Update() override;
 	void Render() override;
-
 };
 
 #endif // !BULLET_H

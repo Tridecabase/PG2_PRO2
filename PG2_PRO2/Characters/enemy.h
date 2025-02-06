@@ -10,8 +10,10 @@ public:
 	~Enemy() = default;
 
 	void Update() override;
+	void Render() override;
 
 private:
+	void DebugInfo();
 	float direction = 1.0f;
 };
 
