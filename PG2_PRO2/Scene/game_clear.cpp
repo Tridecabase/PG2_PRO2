@@ -1,17 +1,20 @@
 #include "game_clear.h"
 
-Gameclear::~Gameclear()
+GameClear::~GameClear()
 {
 }
 
-void Gameclear::Init()
+void GameClear::Init()
 {
 }
 
-void Gameclear::Update()
+void GameClear::Update()
 {
 }
 
-void Gameclear::Render()
+void GameClear::Render()
 {
+	Novice::DrawBox(0, 0, 1280, 720, 0.0f, 0xD4F9F2FF, kFillModeSolid);
+	Novice::ScreenPrintf(10, 10, "GAME CLEAR");
+	Novice::ScreenPrintf(10, 30, "PRESS TAB TO CONTINUE");
 }

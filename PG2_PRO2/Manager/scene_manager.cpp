@@ -3,9 +3,17 @@
 SceneManager::SceneManager()
 {
 	Init();
+    gameclear = new GameClear();
+    gameover = new Gameover();
+	title = new Title();
+
 }
 SceneManager::~SceneManager()
 {
+    delete game;
+    delete title;
+    delete gameclear;
+    delete gameover;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////
@@ -29,7 +37,7 @@ void SceneManager::Init() {
 
 void SceneManager::Update(char keys[256], char preKeys[256]) {
 
-#ifdef _DEBUG
+
 	//TESTシーン切り替え
 	if (keys[DIK_TAB] && !preKeys[DIK_TAB]) {
 		if (current_scene != SceneState::GAMEOVER) {
@@ -39,7 +47,7 @@ void SceneManager::Update(char keys[256], char preKeys[256]) {
 			current_scene = SceneState::TITLE;
 		}
 	}
-#endif
+
 
 	switch (current_scene) {
 	case SceneState::TITLE:
@@ -54,11 +62,13 @@ void SceneManager::Update(char keys[256], char preKeys[256]) {
 		game->Update();
 		break;
 	case SceneState::GAMECLEAR:
+		game->Init();
 		if (keys[DIK_SPACE] && !preKeys[DIK_SPACE]) {
 			current_scene = SceneState::TITLE;
 		}
 		break;
 	case SceneState::GAMEOVER:
+		game->Init();
 		if (keys[DIK_SPACE] && !preKeys[DIK_SPACE]) {
 			current_scene = SceneState::TITLE;
 		}
@@ -84,17 +94,16 @@ void SceneManager::Render() {
 
 	switch (current_scene) {
 	case SceneState::TITLE:
-		Novice::DrawBox(0, 0, 1280, 720, 0.0f, 0xF2D7D5FF, kFillModeSolid);
+		title->Render();
 		break;
 	case SceneState::ARCADE:
-		Novice::DrawBox(0, 0, 1280, 720, 0.0f, 0xE8D4F9FF, kFillModeSolid);
 		game->Render();
 		break;
 	case SceneState::GAMECLEAR:
-		Novice::DrawBox(0, 0, 1280, 720, 0.0f, 0xD4F9F2FF, kFillModeSolid);
+		gameclear->Render();
 		break;
 	case SceneState::GAMEOVER:
-		Novice::DrawBox(0, 0, 1280, 720, 0.0f, 0xF2E4D4FF, kFillModeSolid);
+        gameover->Render();
 		break;
 	default:
 		Novice::DrawBox(0, 0, 1280, 720, 0.0f, 0xA0A0A0FF, kFillModeSolid);

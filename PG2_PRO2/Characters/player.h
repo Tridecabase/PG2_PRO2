@@ -21,6 +21,7 @@ public:
 	std::vector<Actor*> bullet;
 
 private:
+	CollisionBox* box;
 	unsigned int wirecolor;
 	int shot_cooldown;
 	ActorState bullet_state;

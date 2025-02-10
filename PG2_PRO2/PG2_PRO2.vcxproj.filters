@@ -229,4 +229,7 @@
       <Filter>Collision</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Csv\enimies.CSV" />
+  </ItemGroup>
 </Project>

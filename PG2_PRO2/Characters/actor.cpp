@@ -39,17 +39,36 @@ void Actor::Input()
 void Actor::TakeDamage(int damage)
 {
 	s.hp -= damage;
+	if (s.hp < 0) {
+		s.hp = 0;
+	}
+
+	flashTimer = 3;
 }
 
 void Actor::Render()
 {
+	unsigned int color = GetRGBA();
+	if (flashTimer > 0) {
+		color = 0xFF0000FF;
+		flashTimer--;
+	}
+
 	Novice::DrawEllipse(
 		static_cast<int>(s.x),
 		static_cast<int>(s.y),
 		static_cast<int>(s.radius),
 		static_cast<int>(s.radius),
 		s.angle,
-		GetRGBA(),
+		color,
 		kFillModeWireFrame
 	);
+}
+
+void Actor::OnCollision(Actor* otherActor, int damage)
+{
+	if (otherActor)
+	{
+		TakeDamage(damage);
+	}
 }

@@ -4,6 +4,8 @@ Bullet::Bullet(const ActorState& state)
 	: Actor(state) 
 {
 	isAlive = true;
+	box = new CollisionBox(Vector2{ s.x - s.radius, s.y - s.radius }, s.radius * 2, s.radius * 2, CollisionLayer::BULLET);
+	CollisionManager::GetInstance().AddCollisionBox(box);
 }
 
 void Bullet::Update()
@@ -14,6 +16,8 @@ void Bullet::Update()
 	if (s.y < s.radius) {
 		isAlive = false;
 	}
+
+	box->SetPosition({ s.x - s.radius, s.y - s.radius });
 }
 
 void Bullet::Render()

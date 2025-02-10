@@ -23,6 +23,8 @@ public:
 	/* 描画処理 */
 	virtual void Render();
 
+	virtual void OnCollision(Actor* otherActor, int damage);
+
 public:
 
 	bool isHit;
@@ -58,6 +60,8 @@ protected:
 	//Actor状態
 	ActorState s;
 	BlendMode current_mode;
+
+	int flashTimer = 0;
 };
 
 #endif // !ACTOR_H

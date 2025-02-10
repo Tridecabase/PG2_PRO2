@@ -15,6 +15,8 @@ public:
 private:
 	void DebugInfo();
 	float direction = 1.0f;
+
+	CollisionBox* box;
 };
 
 #endif // !ENEMY_H

@@ -11,6 +11,8 @@ Player::Player(const ActorState& state)
     {
         delete actor;
     }
+    box = new CollisionBox(Vector2{ s.x - s.radius, s.y - s.radius }, s.radius * 2, s.radius * 2, CollisionLayer::PLAYER);
+    CollisionManager::GetInstance().AddCollisionBox(box);
 }
 
 Player::~Player()
@@ -28,6 +30,8 @@ void Player::Update()
     Actor::Input();
     Move();
     Shot();
+
+    box->SetPosition({ s.x - s.radius, s.y - s.radius });
 }
 
 void Player::Move()
@@ -117,8 +121,8 @@ void Player::Render()
 void Player::DebugInfo() {
 #ifdef _DEBUG
     ImGui::Begin("Player");
-    ImGui::DragFloat("radius", &s.radius, 2.0f, 1.0f, 300.0f, "%f",1.0f);
-    ImGui::DragFloat("rotation speed", &ra, 0.01f, -1.0f, 1.0f, "%f", 1.0f);
+    ImGui::DragFloat("radius", &s.radius, 2.0f, 1.0f, 300.0f, "%f", ImGuiSliderFlags_None);
+    ImGui::DragFloat("rotation speed", &ra, 0.01f, -1.0f, 1.0f, "%f", ImGuiSliderFlags_None);
     ImGui::End();
 #endif
 }

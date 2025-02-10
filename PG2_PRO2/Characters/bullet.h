@@ -11,6 +11,9 @@ public:
 
 	void Update() override;
 	void Render() override;
+
+private:
+	CollisionBox* box;
 };
 
 #endif // !BULLET_H

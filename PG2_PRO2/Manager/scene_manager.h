@@ -3,6 +3,9 @@
 
 #include "Core/xion.h"
 #include "Scene/game.h"
+#include "Scene/game_clear.h"
+#include "Scene/game_over.h"
+#include "Scene/title.h"
 
 class SceneManager {
 public:
@@ -30,6 +33,9 @@ private:
 
     //現在のシーン
     SceneState current_scene;
+    Title* title;
+    GameClear* gameclear;
+    Gameover* gameover;
 
     Game* game;
 

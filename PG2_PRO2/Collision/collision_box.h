@@ -4,6 +4,8 @@
 #include "Core/xion.h"
 #include "Collision/collision_layer.h"
 
+
+class Actor;
 class CollisionBox
 {
 public:
@@ -14,7 +16,8 @@ public:
         height(height), 
         layer(layer),
         color(GREEN),
-        isCollided(false)
+        isCollided(false),
+        isAlive(true)
     {}
 
     ~CollisionBox() {}
@@ -42,5 +45,8 @@ public:
     CollisionLayer layer;
     unsigned int color;
     bool isCollided;
+    bool isAlive;
+
+    Actor* owner = nullptr;
 };
 #endif // COLLISION_BOX_H

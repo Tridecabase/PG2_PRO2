@@ -3,11 +3,11 @@
 
 #include "base_scene.h"
 
-class Gameclear : public BaseScene
+class GameClear : public BaseScene
 {
 public:
-	Gameclear() = default;
-	~Gameclear() override;
+	GameClear() = default;
+	~GameClear() override;
 
 	void Init() override;
 	void Update() override;

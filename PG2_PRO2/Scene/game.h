@@ -5,6 +5,7 @@
 #include "Characters/actor.h"
 #include "Characters/enemy.h"
 #include "Characters/player.h"
+#include "Tools/csv_parser.h"
 
 class Game : public BaseScene
 {
@@ -16,10 +17,11 @@ public:
 	void Update() override;
 	void Render() override;
 
+	std::vector<ActorState> LoadEnemiesFromCSV(const std::string& filename);
+
 private:
 	std::vector<std::unique_ptr<Actor>> enemy;
 	std::unique_ptr<Player> player;
-	float enemy_distance;
 };
 
 #endif // !GAME_H

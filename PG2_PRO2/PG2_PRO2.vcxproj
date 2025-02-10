@@ -179,6 +179,9 @@ xcopy C:\KamataEngine\DirectXGame\Resources "$(OutDirFullPath)NoviceResources" /
     <ClInclude Include="Tools\sprite_shaker.h" />
     <ClInclude Include="Tools\star_generator.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Csv\enimies.CSV" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
