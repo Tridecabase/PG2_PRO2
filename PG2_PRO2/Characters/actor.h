@@ -2,9 +2,7 @@
 #define ACTOR_H
 
 #include "Core/xion.h"
-
-//判定ボックス表示
-static bool showCollisionBox;
+#include "Collision/collision_manager.h"
 
 class Actor {
 public:

@@ -2,7 +2,10 @@
 
 Actor::Actor(const ActorState& state) 
 	: s(state), isHit(false), isAlive(true), 
-	current_mode(BlendMode::kBlendModeNone) {}
+	current_mode(BlendMode::kBlendModeNone) 
+{
+
+}
 
 void Actor::Update()
 {
@@ -40,31 +43,13 @@ void Actor::TakeDamage(int damage)
 
 void Actor::Render()
 {
-	if (showCollisionBox)
-	{
-		if (!isHit)
-		{
-			Novice::DrawEllipse(
-				static_cast<int>(s.x),
-				static_cast<int>(s.y),
-				static_cast<int>(s.radius),
-				static_cast<int>(s.radius),
-				s.angle,
-				GetRGBA(),
-				kFillModeWireFrame
-			);
-		}
-		else
-		{
-			Novice::DrawEllipse(
-				static_cast<int>(s.x),
-				static_cast<int>(s.y),
-				static_cast<int>(s.radius),
-				static_cast<int>(s.radius),
-				s.angle,
-				RED,
-				kFillModeWireFrame
-			);
-		}
-	}
+	Novice::DrawEllipse(
+		static_cast<int>(s.x),
+		static_cast<int>(s.y),
+		static_cast<int>(s.radius),
+		static_cast<int>(s.radius),
+		s.angle,
+		GetRGBA(),
+		kFillModeWireFrame
+	);
 }

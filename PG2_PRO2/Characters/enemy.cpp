@@ -30,7 +30,6 @@ void Enemy::Render()
 		s.angle,
 		GetRGBA(),kFillModeSolid
 	);
-	Actor::Render();
 }
 
 void Enemy::DebugInfo()

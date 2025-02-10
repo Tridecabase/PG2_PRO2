@@ -119,6 +119,8 @@ xcopy C:\KamataEngine\DirectXGame\Resources "$(OutDirFullPath)NoviceResources" /
     <ClCompile Include="Characters\bullet.cpp" />
     <ClCompile Include="Characters\enemy.cpp" />
     <ClCompile Include="Characters\player.cpp" />
+    <ClCompile Include="Collision\collision.cpp" />
+    <ClCompile Include="Collision\collision_manager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Manager\scene_manager.cpp" />
     <ClCompile Include="Scene\base_scene.cpp" />
@@ -160,6 +162,10 @@ xcopy C:\KamataEngine\DirectXGame\Resources "$(OutDirFullPath)NoviceResources" /
     <ClInclude Include="Characters\bullet.h" />
     <ClInclude Include="Characters\enemy.h" />
     <ClInclude Include="Characters\player.h" />
+    <ClInclude Include="Collision\collision.h" />
+    <ClInclude Include="Collision\collision_box.h" />
+    <ClInclude Include="Collision\collision_layer.h" />
+    <ClInclude Include="Collision\collision_manager.h" />
     <ClInclude Include="Core\enum.h" />
     <ClInclude Include="Core\structs.h" />
     <ClInclude Include="Core\xion.h" />

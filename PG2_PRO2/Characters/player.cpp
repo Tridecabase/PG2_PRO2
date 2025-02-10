@@ -112,7 +112,6 @@ void Player::Render()
         }
     }
     StarGenerator::DrawStar(s.x, s.y, s.radius, s.angle, GetRGBA(), wirecolor, GetBlendMode());
-	Actor::Render();
 }
 
 void Player::DebugInfo() {

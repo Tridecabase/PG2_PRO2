@@ -43,16 +43,25 @@ void SceneManager::Update(char keys[256], char preKeys[256]) {
 
 	switch (current_scene) {
 	case SceneState::TITLE:
-
+		if (keys[DIK_SPACE] && !preKeys[DIK_SPACE]) {
+			current_scene = SceneState::ARCADE;
+		}
 		break;
 	case SceneState::ARCADE:
+		if (keys[DIK_BACKSPACE] && !preKeys[DIK_BACKSPACE]) {
+			current_scene = SceneState::TITLE;
+		}
 		game->Update();
 		break;
 	case SceneState::GAMECLEAR:
-
+		if (keys[DIK_SPACE] && !preKeys[DIK_SPACE]) {
+			current_scene = SceneState::TITLE;
+		}
 		break;
 	case SceneState::GAMEOVER:
-
+		if (keys[DIK_SPACE] && !preKeys[DIK_SPACE]) {
+			current_scene = SceneState::TITLE;
+		}
 		break;
 	default:
 

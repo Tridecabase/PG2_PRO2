@@ -29,6 +29,9 @@
     <Filter Include="Scene">
       <UniqueIdentifier>{15abc508-e16d-4113-a806-093624f14314}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Collision">
+      <UniqueIdentifier>{7a3ee52a-40e2-4555-8232-4fab6dd04325}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C:\KamataEngine\DirectXGame\base\DirectXCommon.cpp">
@@ -85,6 +88,12 @@
     </ClCompile>
     <ClCompile Include="Scene\game_clear.cpp">
       <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision\collision_manager.cpp">
+      <Filter>Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision\collision.cpp">
+      <Filter>Collision</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -206,6 +215,18 @@
     </ClInclude>
     <ClInclude Include="Scene\game_over.h">
       <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision\collision.h">
+      <Filter>Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision\collision_box.h">
+      <Filter>Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision\collision_layer.h">
+      <Filter>Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision\collision_manager.h">
+      <Filter>Collision</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

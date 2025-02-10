@@ -35,5 +35,4 @@ void Bullet::Render()
 		s.angle,
 		0x000000ff, kFillModeWireFrame
 	);
-	Actor::Render();
 }
