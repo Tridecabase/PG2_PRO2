@@ -60,6 +60,12 @@ void SceneManager::Update(char keys[256], char preKeys[256]) {
 			current_scene = SceneState::TITLE;
 		}
 		game->Update();
+        if (game->GetEnemyDeathCount() == 20) {
+            current_scene = SceneState::GAMECLEAR;
+        }
+        if (game->GetPlayer()->GetHP() <= 0) {
+            current_scene = SceneState::GAMEOVER;
+        }
 		break;
 	case SceneState::GAMECLEAR:
 		game->Init();
@@ -98,6 +104,7 @@ void SceneManager::Render() {
 		break;
 	case SceneState::ARCADE:
 		game->Render();
+		Novice::ScreenPrintf(0, 40, "20 TO WIN");
 		break;
 	case SceneState::GAMECLEAR:
 		gameclear->Render();

@@ -22,6 +22,10 @@ void Enemy::Update()
 	}
 
 	box->SetPosition({ s.x - s.radius, s.y - s.radius });
+
+    if (s.hp <= 0) {
+		isAlive = false;
+	}
 }
 
 void Enemy::Render()

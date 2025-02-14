@@ -15,7 +15,7 @@ public:
 
 	/* 更新処理 */
 	virtual void Update();
-	void UpdateState(const ActorState& newState);
+	void UpdateState();
 	void MoveDir(float dirX, float dirY);
 	void Input();
 	void TakeDamage(int damage);
@@ -55,10 +55,15 @@ public:
 	void SetHP(int hp) { s.hp = std::max<int>(0, std::min<int>(hp, s.max_hp)); }
 	void SetMaxHP(int max_hp) { s.max_hp = std::max<int>(0, max_hp); }
 
+	float GetPosX() const { return s.x; };
+    float GetPosY() const { return s.y; };
+	float GetRadius() const { return s.radius; }
+
 protected:
 
 	//Actor状態
 	ActorState s;
+	ActorState stateRef;
 	BlendMode current_mode;
 
 	int flashTimer = 0;

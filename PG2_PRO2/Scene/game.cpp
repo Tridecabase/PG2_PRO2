@@ -14,6 +14,8 @@ Game::~Game()
 
 void Game::Init()
 {
+	player.reset();
+	enemy.clear();
 	//敵の初期化
 	std::vector<ActorState> enemyStates = LoadEnemiesFromCSV("./Csv/enemies.CSV");
 	for (const auto& state : enemyStates)
@@ -24,8 +26,7 @@ void Game::Init()
 	//プレイヤーの初期化
 	ActorState player_state ={ WINDOW_WIDTH / 2 ,WINDOW_HEIGHT - 100.0f,10.0f,10.0f,30.0f,0.0f,0xff,0xff,0xff,0x44,100,100 };
 	player = std::make_unique<Player>(player_state);
-
-	CollisionManager::GetInstance();
+	enemyDeathCount = 0;
 }
 
 void Game::Update()
@@ -36,20 +37,9 @@ void Game::Update()
 		{
 			if (!enemy[i]->isAlive)
 			{
-				enemy[i] = std::make_unique<Enemy>(ActorState{
-					100.0f,
-					-50.0f, 
-					0.0f,    // vx
-					2.0f,    // vy
-					30.0f,
-					0.0f, 
-					255,     // r
-					0,       // g
-					0,       // b
-					255,     // a
-					100,     // hp
-					100      // max_hp
-					});
+				enemyDeathCount++;
+				enemy[i]->UpdateState();
+				enemy[i]->isAlive = true;
 			}
 			else
 			{
@@ -58,15 +48,42 @@ void Game::Update()
 		}
 	}
 	player->Update();
-	CollisionManager::GetInstance().Update();
 
+    for (int i = 0; i < enemy.size(); i++)
+    {
+        if (enemy[i] != nullptr)
+        {
+            if (Collision::CircleCircle(player->GetPosX(), player->GetPosY(),player->GetRadius(), enemy[i]->GetPosX(), enemy[i]->GetPosY(), enemy[i]->GetRadius()))
+            {
+                player->TakeDamage(5);
+                player->SetRGBA(255, 0, 0, 255);
+            }
+			else 
+			{
+                player->SetRGBA(255, 255, 255, 255);
+			}
+        }
+    }
 
-
-
+    for (int i = 0; i < enemy.size(); i++)
+    {
+        if (enemy[i] != nullptr)
+        {
+            for (int j = 0; j < player->bullet.size(); j++)
+            {
+                if (Collision::CircleCircle(player->bullet[j]->GetPosX(), player->bullet[j]->GetPosY(), player->bullet[j]->GetRadius(), enemy[i]->GetPosX(), enemy[i]->GetPosY(), enemy[i]->GetRadius()))
+                {
+                    enemy[i]->TakeDamage(50);
+                    player->bullet[j]->isAlive = false;
+                }
+            }
+        }
+    }
+	
 }
 
 void Game::Render()
-{
+{ 
 	Novice::DrawBox(0, 0, 1280, 720, 0.0f, 0xE8D4F9FF, kFillModeSolid);
 	player->Render();
 	for (int i = 0; i < enemy.size(); i++)
@@ -76,6 +93,9 @@ void Game::Render()
 			enemy[i]->Render();
 		}
 	}
+
+	Novice::ScreenPrintf(0, 0, "HP:%d", player->GetHP());
+	Novice::ScreenPrintf(0, 20, "count:%d", enemyDeathCount);
 }
 
 std::vector<ActorState> Game::LoadEnemiesFromCSV(const std::string& filePath)
@@ -108,4 +128,16 @@ std::vector<ActorState> Game::LoadEnemiesFromCSV(const std::string& filePath)
         enemyStates.push_back(state);
     }
     return enemyStates;
+}
+
+Player* Game::GetPlayer() const
+{
+    if (player != nullptr)
+	{
+		return player.get();
+	}
+	else 
+	{
+		return nullptr;
+	}
 }

@@ -4,7 +4,7 @@ Actor::Actor(const ActorState& state)
 	: s(state), isHit(false), isAlive(true), 
 	current_mode(BlendMode::kBlendModeNone) 
 {
-
+	stateRef = state;
 }
 
 void Actor::Update()
@@ -19,9 +19,9 @@ void Actor::Update()
 	}
 }
 
-void Actor::UpdateState(const ActorState& newState)
+void Actor::UpdateState()
 {
-	s = newState;
+	s = stateRef;
 }
 
 void Actor::MoveDir(float dirX, float dirY)

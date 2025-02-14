@@ -6,6 +6,7 @@
 #include "Characters/enemy.h"
 #include "Characters/player.h"
 #include "Tools/csv_parser.h"
+#include "Collision/collision.h"
 
 class Game : public BaseScene
 {
@@ -18,6 +19,11 @@ public:
 	void Render() override;
 
 	std::vector<ActorState> LoadEnemiesFromCSV(const std::string& filename);
+
+	Player* GetPlayer() const;
+	int GetEnemyDeathCount() const { return enemyDeathCount; }
+
+    int enemyDeathCount;
 
 private:
 	std::vector<std::unique_ptr<Actor>> enemy;
